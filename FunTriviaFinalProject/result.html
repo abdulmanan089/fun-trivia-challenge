@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Score</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Your Score:</h2>
+    <p id="score-display"></p>
+    <img src="images/superman_vs_thor_chart.png" alt="Win Probability Chart" style="max-width:100%;margin-top:20px;border-radius:10px;">
+    <a href="quiz.html" class="start-btn">Try Again</a>
+  </div>
+  <script>
+    document.getElementById("score-display").innerText = localStorage.getItem("quizScore") || "0";
+  </script>
+</body>
+</html>
