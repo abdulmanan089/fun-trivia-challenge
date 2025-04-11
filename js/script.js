@@ -46,9 +46,6 @@ function loadQuestion() {
   // set background image (instead of using <img> tag)
   document.getElementById("question-image").style.backgroundImage = `url('${q.image}')`;
 
-  // hide image until the user submits their answer
-  document.getElementById("question-image-container").style.display = "none";
-
   // make the options into radio buttons with labels
   const opts = q.options.map(opt => 
     `<label><input type="radio" name="option" value="${opt}"> ${opt}</label><br>`
@@ -73,9 +70,6 @@ function submitAnswer() {
 
   // show feedback based on the answer
   document.getElementById("feedback").innerText = isCorrect ? "✅ Correct!" : "❌ Wrong!";
-
-  // show the image after submitting the answer
-  document.getElementById("question-image-container").style.display = "block";
 
   // if correct, increase the score
   if (isCorrect) score++;
