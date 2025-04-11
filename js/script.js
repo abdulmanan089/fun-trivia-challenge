@@ -4,31 +4,31 @@ const questions = [
     question: "Which movie won Best Picture in 2020?",
     options: ["Joker", "Parasite", "1917", "Ford v Ferrari"],
     answer: "Parasite",
-    image: "FunTriviaFinalProject/images/parasite.jpg"
+    image: "images/question1.jpg"
   },
   {
     question: "Who played Iron Man in the MCU?",
     options: ["Chris Evans", "Robert Downey Jr.", "Mark Ruffalo", "Chris Pratt"],
     answer: "Robert Downey Jr.",
-    image: "FunTriviaFinalProject/images/ironman.jpg"
+    image: "images/question2.jpg"
   },
   {
     question: "What is the name of the hobbit played by Elijah Wood?",
     options: ["Bilbo", "Sam", "Frodo", "Pippin"],
     answer: "Frodo",
-    image: "FunTriviaFinalProject/images/frodo.jpg"
+    image: "images/question3.jpg"
   },
   {
     question: "Which movie features the quote: 'I'll be back'?",
     options: ["The Matrix", "Die Hard", "Terminator", "Robocop"],
     answer: "Terminator",
-    image: "FunTriviaFinalProject/images/terminator.jpg"
+    image: "images/question4.jpg"
   },
   {
     question: "Superman vs Thor — Who would win?",
     options: ["Superman", "Thor"],
     answer: "Superman",
-    image: "FunTriviaFinalProject/images/superman_vs_thor_chart.png"
+    image: "images/question5.jpg"
   }
 ];
 
@@ -40,10 +40,14 @@ let score = 0;
 function loadQuestion() {
   const q = questions[current]; // get the current question object
 
-  // show the question text and related image
+  // show the question text
   document.getElementById("question").innerText = q.question;
-  document.getElementById("question-image").src = q.image;
-  document.getElementById("question-image").alt = "Image for: " + q.question;
+
+  // set background image (instead of using <img> tag)
+  document.getElementById("question-image").style.backgroundImage = `url('${q.image}')`;
+
+  // hide image until the user submits their answer
+  document.getElementById("question-image-container").style.display = "none";
 
   // make the options into radio buttons with labels
   const opts = q.options.map(opt => 
@@ -69,6 +73,9 @@ function submitAnswer() {
 
   // show feedback based on the answer
   document.getElementById("feedback").innerText = isCorrect ? "✅ Correct!" : "❌ Wrong!";
+
+  // show the image after submitting the answer
+  document.getElementById("question-image-container").style.display = "block";
 
   // if correct, increase the score
   if (isCorrect) score++;
