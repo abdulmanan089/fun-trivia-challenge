@@ -4,17 +4,68 @@
   <meta charset="UTF-8">
   <title>Movie Quiz</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Style for background image container */
+    .question-image-bg {
+      width: 100%;
+      max-width: 600px;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      margin: 10px auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <div id="quiz-box">
-      <img id="question-image" src="" alt="Question Image" style="width:100%;max-width:300px;border-radius:8px;margin-bottom:10px;">
+      
+      <!-- Background image box will show after user submits an answer -->
+      <div id="question-image-container" style="display: none;">
+        <div id="question-image" class="question-image-bg"></div>
+      </div>
+
+      <!-- Question will go here -->
       <h2 id="question">Loading...</h2>
+
+      <!-- Options will be dynamically added -->
       <div id="options"></div>
+
+      <!-- Submit button -->
       <button onclick="submitAnswer()">Submit</button>
+
+      <!-- Feedback like "Correct!" or "Wrong!" -->
       <p id="feedback"></p>
     </div>
   </div>
+
+  <!-- Script to handle quiz logic -->
   <script src="js/script.js"></script>
 </body>
 </html>
