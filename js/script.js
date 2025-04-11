@@ -1,4 +1,4 @@
-// Array of quiz questions, options, correct answers, and related images
+// Questions for the quiz - each one has a question, options, answer, and image
 const questions = [
   {
     question: "Which movie won Best Picture in 2020?",
@@ -32,56 +32,63 @@ const questions = [
   }
 ];
 
-// Track the current question index and user's score
+// Keep track of current question and user score
 let current = 0;
 let score = 0;
 
-// Function to load a question and display its image and options
+// Loads a question and shows the image and options
 function loadQuestion() {
-  const q = questions[current]; // Get current question object
-  document.getElementById("question").innerText = q.question; // Display question text
-  document.getElementById("question-image").src = q.image; // Set image for the question
-  document.getElementById("question-image").alt = "Image for: " + q.question; // Set alt text
+  const q = questions[current]; // Get current question info
 
-  // Create radio button options dynamically
+  // Show question and related image
+  document.getElementById("question").innerText = q.question;
+  document.getElementById("question-image").src = q.image;
+  document.getElementById("question-image").alt = "Image for: " + q.question;
+
+  // Create options as radio buttons
   const opts = q.options.map(opt => 
     `<label><input type="radio" name="option" value="${opt}"> ${opt}</label><br>`
   );
-  document.getElementById("options").innerHTML = opts.join(""); // Display options
+
+  // Add options to the page
+  document.getElementById("options").innerHTML = opts.join("");
 }
 
-// Function to handle answer submission
+// This function runs when user clicks Submit
 function submitAnswer() {
-  const selected = document.querySelector('input[name="option"]:checked'); // Get selected option
+  // Get selected answer
+  const selected = document.querySelector('input[name="option"]:checked');
 
+  // If nothing is selected, show alert
   if (!selected) {
-    alert("Please select an answer"); // Alert if nothing is selected
+    alert("Please select an answer");
     return;
   }
 
-  // Check if selected answer is correct
+  // Check if answer is correct
   const isCorrect = selected.value === questions[current].answer;
 
-  // Show feedback message
+  // Show correct or wrong feedback
   document.getElementById("feedback").innerText = isCorrect ? "✅ Correct!" : "❌ Wrong!";
 
-  // Increase score if answer is correct
+  // If correct, add 1 to score
   if (isCorrect) score++;
 
-  current++; // Move to next question
+  // Move to next question
+  current++;
 
-  // If there are more questions, load the next one after short delay
+  // If there are more questions, show the next one after a short pause
   if (current < questions.length) {
     setTimeout(() => {
       document.getElementById("feedback").innerText = ""; // Clear feedback
-      loadQuestion(); // Load next question
-    }, 800); // Wait 800ms before loading next
+      loadQuestion(); // Load next
+    }, 800);
   } else {
-    // End of quiz: save score and go to result page
+    // If quiz is finished, save score and go to results page
     localStorage.setItem("quizScore", score);
     window.location.href = "result.html";
   }
 }
 
-// Load the first question when the page loads
+// Load the first question when the page opens
 window.onload = loadQuestion;
