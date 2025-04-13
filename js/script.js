@@ -4,31 +4,31 @@ const questions = [
     question: "Which movie won Best Picture in 2020?",
     options: ["Joker", "Parasite", "1917", "Ford v Ferrari"],
     answer: "Parasite",
-    image: "images/question1.jpg"
+    image: "FunTriviaFinalProject/images/question1.jpg"
   },
   {
     question: "Who played Iron Man in the MCU?",
     options: ["Chris Evans", "Robert Downey Jr.", "Mark Ruffalo", "Chris Pratt"],
     answer: "Robert Downey Jr.",
-    image: "images/question2.jpg"
+    image: "FunTriviaFinalProject/images/question2.jpg"
   },
   {
     question: "What is the name of the hobbit played by Elijah Wood?",
     options: ["Bilbo", "Sam", "Frodo", "Pippin"],
     answer: "Frodo",
-    image: "images/question3.jpg"
+    image: "FunTriviaFinalProject/images/question3.jpg"
   },
   {
     question: "Which movie features the quote: 'I'll be back'?",
     options: ["The Matrix", "Die Hard", "Terminator", "Robocop"],
     answer: "Terminator",
-    image: "images/question4.jpg"
+    image: "FunTriviaFinalProject/images/question4.jpg"
   },
   {
     question: "Superman vs Thor — Who would win?",
     options: ["Superman", "Thor"],
     answer: "Superman",
-    image: "images/question5.jpg"
+    image: "FunTriviaFinalProject/images/question5.jpg"
   }
 ];
 
