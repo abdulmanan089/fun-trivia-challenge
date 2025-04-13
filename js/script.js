@@ -44,10 +44,12 @@ function loadQuestion() {
   document.getElementById("question").innerText = q.question;
 
   // set background image (instead of using <img> tag)
-  document.getElementById("question-image").style.backgroundImage = `url('${q.image}')`;
+  const imageBox = document.getElementById("question-image");
+  imageBox.style.backgroundImage = `url('${q.image}')`;
+  imageBox.style.display = "block"; // in case it's hidden
 
   // make the options into radio buttons with labels
-  const opts = q.options.map(opt => 
+  const opts = q.options.map(opt =>
     `<label><input type="radio" name="option" value="${opt}"> ${opt}</label><br>`
   );
 
@@ -82,7 +84,7 @@ function submitAnswer() {
     setTimeout(() => {
       document.getElementById("feedback").innerText = ""; // clear feedback
       loadQuestion(); // load next question
-    }, 800);
+    }, 1000); // increased pause slightly for better UX
   } else {
     // quiz is done – save the score and move to the result page
     localStorage.setItem("quizScore", score);
